@@ -33,7 +33,7 @@ func log(ctx context.Context, config *logging.Config, ready func() error) error 
 }
 
 func copy(wg *sync.WaitGroup, r io.Reader, id string, kind string) {
-	f, _ := os.Create(filepath.Join(os.TempDir(), fmt.Sprintf("%s_%s_%s.log", os.TempDir(), id, kind)))
+	f, _ := os.Create(filepath.Join(os.TempDir(), fmt.Sprintf("%s_%s.log", id, kind)))
 	defer f.Close()
 	defer wg.Done()
 	s := bufio.NewScanner(r)
